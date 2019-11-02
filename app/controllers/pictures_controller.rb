@@ -1,6 +1,9 @@
 class PicturesController < ApplicationController
-    before_action :login_check, only: [:index, :new, :confirm, :create]
-    
+    #%iはシンボル記法の配列作成する
+    #[,]は不要なので注意。
+    before_action :login_check, only: %i[index new confirm create]
+    before_action :set_params, only: %i[edit update]
+
     def index
         @pictures = Picture.all.order(created_at: "DESC")
     end
@@ -31,12 +34,12 @@ class PicturesController < ApplicationController
     end
 
     def edit
-        @picture = Picture.find(params[:id])
+        #@picture = Picture.find(params[:id])
         #binding.pry
     end
 
     def update
-        @picture = Picture.find(params[:id])
+        #@picture = Picture.find(params[:id])
         if @picture.update(picture_params)
             flash[:notice] = "投稿を編集しました"
             redirect_to pictures_path
@@ -49,6 +52,10 @@ class PicturesController < ApplicationController
 
     def picture_params
         params.require(:picture).permit(:image, :image_cache, :content)
+    end
+
+    def set_params
+        @picture = Picture.find(params[:id])
     end
 
     def login_check
