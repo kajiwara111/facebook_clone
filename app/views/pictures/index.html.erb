@@ -1,0 +1,19 @@
+<h1>投稿一覧</h1>
+<%= notice %>
+
+<% @pictures.each do |picture| %>
+    <table>
+        <div class = "each_feed">
+            <tr>
+                <td><%= picture.created_at %></td>
+            </tr>
+            <tr>
+                <td><%= picture.content %></td>
+            </tr>
+            <tr>
+                <td><%= image_tag(picture.image.url) if picture.image && picture.image.url %></td>
+            </tr>
+        </div>
+    </table>
+<% end %>
+

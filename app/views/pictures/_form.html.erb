@@ -10,8 +10,14 @@
         </ul>
       </div>
     <% end %>
-  
-    <div class="field">
+
+    <div class="content_field">
+      <%= form.label :content %>
+      <%= form.text_field :content %>
+    </div>
+
+    
+    <div class="image_field">
       <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
       <%= form.label :image %>
       <%= form.file_field :image %>
@@ -20,5 +26,5 @@
     <div class="actions">
       <%= form.submit %>
     </div>
-  <% end %>
+<% end %>
   
