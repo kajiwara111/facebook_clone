@@ -19,6 +19,18 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @user_feeds = @user.pictures 
     end
+
+    def edit
+
+    end
+    
+    def update
+
+    end
+
+    def destroy
+
+    end
   
     private
     
