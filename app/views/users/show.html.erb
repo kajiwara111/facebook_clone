@@ -1,3 +1,21 @@
 <h1><%= @user.name %>のページ</h1>
 
-<p>メールアドレス: <%= @user.email %></p>
+<p>あなたの投稿一覧</p>
+
+<% @user_feeds.each do |picture| %>
+    <table>
+        <div class = "each_feed">
+            <tr>
+                <td>投稿日時 <%= picture.created_at %></td>
+            </tr>
+            <tr>
+                <td><%= picture.content %></td>
+            </tr>
+            <tr>
+                <td><%= image_tag(picture.image.url) if picture.image && picture.image.url %></td>
+            </tr>
+        </div>
+    </table>
+<% end %>
+
+
