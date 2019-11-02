@@ -5,7 +5,10 @@
     <table>
         <div class = "each_feed">
             <tr>
-                <td><%= picture.created_at %></td>
+                <td>投稿日時 <%= picture.created_at %></td>
+            </tr>
+            <tr>
+                <td>投稿者 <%= picture.user.name %></td>
             </tr>
             <tr>
                 <td><%= picture.content %></td>
