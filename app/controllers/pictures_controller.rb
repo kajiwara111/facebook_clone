@@ -6,6 +6,7 @@ class PicturesController < ApplicationController
 
     def index
         @pictures = Picture.all.order(created_at: "DESC")
+        #@favorite = current_user.favorites.find_by(picture_id)
     end
     
     def new

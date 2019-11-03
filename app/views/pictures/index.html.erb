@@ -15,7 +15,20 @@
             <tr>
                 <td><%= image_tag(picture.image.url) if picture.image && picture.image.url %></td>
             </tr>
+            <tr>
+                <% unless picture.user_id == current_user.id %>
+                    <% favorite = current_user.favorites.find_by(picture_id: picture.id) %> 
+                    <% if favorite %>
+                        <td>
+                            <%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete, class: 'btn btn-danger' %>
+                        </td>
+                    <% else %>
+                        <td>
+                            <%= link_to 'お気に入りする', favorites_path(picture_id: picture.id), method: :post, class: 'btn btn-primary' %>
+                        </td>
+                    <% end %>
+                <% end %>
+            </tr>
         </div>
     </table>
 <% end %>
-
